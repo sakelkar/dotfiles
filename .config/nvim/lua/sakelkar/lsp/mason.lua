@@ -19,6 +19,7 @@ local servers = {
   --"solidity_ls",
   --"sumneko_lua",
   "lua_ls",
+  "gopls",
   --"tflint",
   --"terraformls",
   --"tsserver",

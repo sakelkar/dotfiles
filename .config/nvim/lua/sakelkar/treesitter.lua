@@ -8,7 +8,7 @@ end
 
 configs.setup {
   --ensure_installed =  { "c", "lua", "vim", "help" }, -- one of "all" or a list of languages
-  ensure_installed =  { "c", "lua", "cpp", "bash", "python", "help" }, -- one of "all" or a list of languages
+  ensure_installed =  { "go", "c", "lua", "cpp", "bash", "python", "help" }, -- one of "all" or a list of languages
   sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
   ignore_install = { "" }, -- List of parsers to ignore installing
   matchup = {
