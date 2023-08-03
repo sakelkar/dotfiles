@@ -72,7 +72,7 @@ keymap("n", "<leader>;", ":Alpha<CR>", opts)  --NvimTree explorer toggle
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)  --NvimTree explorer toggle
 keymap("n", "<leader>s", ":SymbolsOutline<CR>", opts)  --NvimTree explorer toggle
 
-keymap("n", "<leader>ff", ":lua require('fzf-lua').files()<CR>", opts) --find files in current directory
+keymap("n", "<leader>ff", ":lua require('fzf-lua').files(cmd='find . -not -path '*/.*' -type -f')<CR>", opts) --find files in current directory
 keymap("n", "<leader>fb", ":lua require('fzf-lua').buffers()<CR>", opts) --find files in current directory
 keymap("n", "<leader>ft", ":lua require('fzf-lua').tabs()<CR>", opts) --find files in current directory
 keymap("n", "<leader>fs", ":lua require('fzf-lua').grep_cword()<CR>", opts) -- find string in current working directory as you type

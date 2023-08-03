@@ -194,6 +194,12 @@ _G.packer_plugins = {
     path = "/users/sakelkar/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
+  ["lsp_lines.nvim"] = {
+    config = { "\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14lsp_lines\frequire\0" },
+    loaded = true,
+    path = "/users/sakelkar/.local/share/nvim/site/pack/packer/start/lsp_lines.nvim",
+    url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
+  },
   ["lsp_signature.nvim"] = {
     loaded = true,
     path = "/users/sakelkar/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim",
@@ -244,10 +250,25 @@ _G.packer_plugins = {
     path = "/users/sakelkar/.local/share/nvim/site/pack/packer/start/material.nvim",
     url = "https://github.com/marko-cerovac/material.nvim"
   },
+  ["monokai-pro.nvim"] = {
+    loaded = true,
+    path = "/users/sakelkar/.local/share/nvim/site/pack/packer/start/monokai-pro.nvim",
+    url = "https://gitlab.com/__tpb/monokai-pro.nvim"
+  },
+  ["monokai.nvim"] = {
+    loaded = true,
+    path = "/users/sakelkar/.local/share/nvim/site/pack/packer/start/monokai.nvim",
+    url = "https://github.com/tanvirtin/monokai.nvim"
+  },
   nightfly = {
     loaded = true,
     path = "/users/sakelkar/.local/share/nvim/site/pack/packer/start/nightfly",
     url = "https://github.com/bluz71/vim-nightfly-colors"
+  },
+  ["nui.nvim"] = {
+    loaded = true,
+    path = "/users/sakelkar/.local/share/nvim/site/pack/packer/start/nui.nvim",
+    url = "https://github.com/MunifTanjim/nui.nvim"
   },
   ["null-ls.nvim"] = {
     loaded = true,
@@ -273,6 +294,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/users/sakelkar/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-navbuddy"] = {
+    loaded = true,
+    path = "/users/sakelkar/.local/share/nvim/site/pack/packer/start/nvim-navbuddy",
+    url = "https://github.com/SmiteshP/nvim-navbuddy"
+  },
+  ["nvim-navic"] = {
+    loaded = true,
+    path = "/users/sakelkar/.local/share/nvim/site/pack/packer/start/nvim-navic",
+    url = "https://github.com/SmiteshP/nvim-navic"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
@@ -308,6 +339,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/users/sakelkar/.local/share/nvim/site/pack/packer/start/onedarker.nvim",
     url = "https://github.com/lunarvim/onedarker.nvim"
+  },
+  ["onenord.nvim"] = {
+    loaded = true,
+    path = "/users/sakelkar/.local/share/nvim/site/pack/packer/start/onenord.nvim",
+    url = "https://github.com/rmehri01/onenord.nvim"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -359,10 +395,20 @@ _G.packer_plugins = {
     path = "/users/sakelkar/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
   },
+  ["venn.nvim"] = {
+    loaded = true,
+    path = "/users/sakelkar/.local/share/nvim/site/pack/packer/start/venn.nvim",
+    url = "https://github.com/jbyuki/venn.nvim"
+  },
   ["vim-bbye"] = {
     loaded = true,
     path = "/users/sakelkar/.local/share/nvim/site/pack/packer/start/vim-bbye",
     url = "https://github.com/moll/vim-bbye"
+  },
+  ["vim-colors-github"] = {
+    loaded = true,
+    path = "/users/sakelkar/.local/share/nvim/site/pack/packer/start/vim-colors-github",
+    url = "https://github.com/cormacrelf/vim-colors-github"
   },
   ["vim-gist"] = {
     loaded = true,
@@ -397,6 +443,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: lsp_lines.nvim
+time([[Config for lsp_lines.nvim]], true)
+try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14lsp_lines\frequire\0", "config", "lsp_lines.nvim")
+time([[Config for lsp_lines.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

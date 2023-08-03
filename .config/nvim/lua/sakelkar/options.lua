@@ -10,7 +10,7 @@ local options = {
   --tabs and indentation
   tabstop = 4,                             -- insert 2 spaces for a tab
   shiftwidth = 4,                          -- the number of spaces inserted for each indentation
-  expandtab = true,                        -- convert tabs to spaces
+  expandtab = false,                        -- convert tabs to spaces
   smartindent = true,                      -- make indenting smarter again
   autoindent = true,                        -- copy indent from current line when starting new one
 
@@ -85,3 +85,27 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.fillchars.eob = " "
 vim.opt.fillchars = vim.opt.fillchars + "vertleft: "
 vim.opt.fillchars = vim.opt.fillchars + "vertright: "
+
+if vim.opt.diff:get() then
+  vim.cmd [[colorscheme github ]] 
+end
+
+vim.opt.list = true
+
+-- Define colors for listchars
+vim.cmd('highlight SpecialKey ctermfg=red')
+vim.cmd('highlight NonText ctermfg=green')
+vim.cmd('highlight Tab ctermfg=blue')
+--vim.cmd('highlight TrailingSpaces ctermbg=red')
+--vim.cmd('autocmd ColorScheme * highlight link TrailingSpaces NonText')
+--vim.cmd('highlight link DarkPlusTrailingSpaces Error')
+
+
+-- Set listchars and associate with highlight groups
+vim.o.listchars = 'tab:▸\\ ,eol:¬,nbsp:.,trail:·,extends:»,precedes:«'
+vim.cmd('highlight SpecialKey gui=bold')
+vim.cmd('highlight NonText gui=italic')
+vim.cmd('highlight Tab gui=underline')
+vim.cmd('autocmd ColorScheme darkplus highlight DarkPlusTrailingSpaces term=reverse ctermfg=red ctermbg=white gui=reverse')
+
+

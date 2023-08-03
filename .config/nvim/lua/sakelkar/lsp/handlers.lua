@@ -2,6 +2,9 @@ local M = {}
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
 
+
+local navbuddy = require("nvim-navbuddy")
+
 local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_cmp_ok then
   return
@@ -13,7 +16,6 @@ M.capabilities = cmp_nvim_lsp.default_capabilities()
 M.setup = function()
   local icons = require "sakelkar.icons"
   local signs = {
-
     { name = "DiagnosticSignError", text = icons.diagnostics.Error },
     { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
     { name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
@@ -26,21 +28,20 @@ M.setup = function()
 
   local config = {
     -- disable virtual text
-    virtual_lines = false,
-    virtual_text = false,
-    -- virtual_text = {
-    --   -- spacing = 7,
-    --   -- update_in_insert = false,
-    --   -- severity_sort = true,
-    --   -- prefix = "<-",
-    --   prefix = " ●",
-    --   source = "if_many", -- Or "always"
-    --   -- format = function(diag)
-    --   --   return diag.message .. "blah"
-    --   -- end,
-    -- },
+    virtual_lines = true,
+    virtual_text = true,
+    virtual_text = {
+      spacing = 7,
+      update_in_insert = false,
+      severity_sort = true,
+      prefix = "●",
+      --source = "if_many", -- Or "always"
+      --format = function(diag)
+      --return diag.message .. "blah"
+      --end,
+    },
 
-    -- show signs
+    --show signs
     signs = {
       active = signs,
     },
@@ -51,11 +52,11 @@ M.setup = function()
       focusable = true,
       style = "minimal",
       border = "rounded",
-      -- border = {"▄","▄","▄","█","▀","▀","▀","█"},
+      border = {"▄","▄","▄","█","▀","▀","▀","█"},
       source = "if_many", -- Or "always"
       header = "",
       prefix = "",
-      -- width = 40,
+      width = 40,
     },
   }
 
@@ -107,8 +108,9 @@ end
 
 M.on_attach = function(client, bufnr)
   lsp_keymaps(bufnr)
-  attach_navic(client, bufnr)
+  --attach_navic(client, bufnr)
 
+  navbuddy.attach(client, bufnr)
   if client.name == "tsserver" then
     require("lsp-inlayhints").on_attach(client, bufnr)
   end
