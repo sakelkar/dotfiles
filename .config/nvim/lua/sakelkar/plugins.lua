@@ -85,6 +85,12 @@ return packer.startup(function(use)
   use { "cormacrelf/vim-colors-github" }
   use 'tanvirtin/monokai.nvim'
   use 'https://gitlab.com/__tpb/monokai-pro.nvim'
+  use 'mhartington/oceanic-next'
+  use 'Yazeed1s/oh-lucy.nvim'
+	use({
+	  'glepnir/zephyr-nvim',
+	  requires = { 'nvim-treesitter/nvim-treesitter', opt = true },
+	})
 
   -- Completion
   use "hrsh7th/nvim-cmp"
