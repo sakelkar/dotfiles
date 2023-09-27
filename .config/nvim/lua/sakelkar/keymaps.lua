@@ -114,4 +114,6 @@ keymap("n", "<leader>ld", "<cmd>Telescope lsp_workspace_diagnostics<cr>", opts)
 keymap("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
 keymap("n", "<leader>lh", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<CR>", opts)
 keymap("n", "<leader>ll", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<CR>", opts)
+keymap("n", "<leader>l;", "<cmd>lua vim.diagnostic.hide()<CR>", opts)
+keymap("n", "<leader>l'", "<cmd>lua vim.diagnostic.show()<CR>", opts)
 return M

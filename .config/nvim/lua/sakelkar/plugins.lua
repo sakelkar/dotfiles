@@ -55,7 +55,7 @@ return packer.startup(function(use)
   use "windwp/nvim-autopairs"
   use "numToStr/Comment.nvim"            --Commenting
   use "kyazdani42/nvim-web-devicons"     --Icons
-  use "kyazdani42/nvim-tree.lua"         --File explorer
+  use "nvim-tree/nvim-tree.lua"         --File explorer
   use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
   use {'simrat39/symbols-outline.nvim'}
   use "moll/vim-bbye"                    --Buffer bye

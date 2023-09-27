@@ -13,7 +13,7 @@ local servers = {
   --"cssmodules_ls",
   --"emmet_ls",
   --"html",
-  --"jdtls",
+  "jdtls",
   --"jsonls",
   --"solc",
   --"solidity_ls",
