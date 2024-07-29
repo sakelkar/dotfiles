@@ -72,7 +72,7 @@ keymap("n", "<leader>;", ":Alpha<CR>", opts)  --NvimTree explorer toggle
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)  --NvimTree explorer toggle
 keymap("n", "<leader>s", ":SymbolsOutline<CR>", opts)  --NvimTree explorer toggle
 
-keymap("n", "<leader>ff", ":lua require('fzf-lua').files(cmd='find . -not -path '*/.*' -type -f')<CR>", opts) --find files in current directory
+keymap("n", "<leader>ff", ":lua require('fzf-lua').files({cmd='find . -not -path '*/.*' -type -f'})<CR>", opts) --find files in current directory
 keymap("n", "<leader>fb", ":lua require('fzf-lua').buffers()<CR>", opts) --find files in current directory
 keymap("n", "<leader>ft", ":lua require('fzf-lua').tabs()<CR>", opts) --find files in current directory
 keymap("n", "<leader>fs", ":lua require('fzf-lua').grep_cword()<CR>", opts) -- find string in current working directory as you type
@@ -116,4 +116,11 @@ keymap("n", "<leader>lh", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<CR>", o
 keymap("n", "<leader>ll", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<CR>", opts)
 keymap("n", "<leader>l;", "<cmd>lua vim.diagnostic.hide()<CR>", opts)
 keymap("n", "<leader>l'", "<cmd>lua vim.diagnostic.show()<CR>", opts)
+
+if vim.lsp.inlay_hint then
+  vim.keymap.set('n', '<leader>uh', function()
+    vim.lsp.inlay_hint(0, nil)
+  end, { desc = 'Toggle Inlay Hints' })
+end
+
 return M

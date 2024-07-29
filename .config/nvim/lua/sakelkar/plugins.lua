@@ -47,6 +47,8 @@ packer.init {
 return packer.startup(function(use)
   -- Plugin Mangager
   use "wbthomason/packer.nvim"           --Have packer manage itself
+  use 'echasnovski/mini.nvim'
+  use 'hrsh7th/cmp-nvim-lsp-signature-help'
 
   --Basic stiff 
   use "christianchiarulli/lua-dev.nvim"
@@ -58,21 +60,26 @@ return packer.startup(function(use)
   use "nvim-tree/nvim-tree.lua"         --File explorer
   use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
   use {'simrat39/symbols-outline.nvim'}
+  --use {'simrat39/inlay-hints.nvim'}
   use "moll/vim-bbye"                    --Buffer bye
   --use "nvim-lualine/lualine.nvim"        --Status line
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
+  
   use "akinsho/toggleterm.nvim"          --Toggleterminal
   use "ahmedkhalf/project.nvim"          --Project
   use "lewis6991/impatient.nvim"
-  use "lukas-reineke/indent-blankline.nvim"
+  use {"lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {}}
   use "goolord/alpha-nvim"
   use "antoinemadec/FixCursorHold.nvim"
 
   -- Colorschemes
   -- If you are using Packer
+  use ('nekonako/xresources-nvim')
+  use ('sainnhe/edge')
+  use ('Th3Whit3Wolf/one-nvim')
   use 'rmehri01/onenord.nvim'
   use("bluz71/vim-nightfly-guicolors") -- preferred colorscheme
   use "lunarvim/colorschemes"
@@ -108,7 +115,7 @@ return packer.startup(function(use)
 
   -- LSP
   use "neovim/nvim-lspconfig" -- enable LSP
-  use({ "glepnir/lspsaga.nvim", branch = "main" }) -- enhanced lsp uis
+  --use({ "glepnir/lspsaga.nvim", branch = "main" }) -- enhanced lsp uis
   use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
   use "williamboman/nvim-lsp-installer"
   use "RRethy/vim-illuminate"
@@ -119,6 +126,14 @@ return packer.startup(function(use)
 		require("lsp_lines").setup()
 	  end,
 	})
+  use 'nvim-treesitter/nvim-treesitter-refactor'
+  use ({
+    'nvimdev/lspsaga.nvim',
+    after = 'nvim-lspconfig',
+    config = function()
+        require('lspsaga').setup({})
+    end,
+  })
 
   -- managing & installing lsp servers, linters & formatters
   use("williamboman/mason.nvim") -- in charge of managing lsp servers, linters & formatters
@@ -178,63 +193,63 @@ return packer.startup(function(use)
 --        "nvim-telescope/telescope.nvim"
 --      }
 --  })
---    use({
---        "utilyre/barbecue.nvim",
---        tag = "*",
---        requires = {
---            "SmiteshP/nvim-navic",
---            "nvim-tree/nvim-web-devicons", -- optional dependency
---        },
---        after = "nvim-web-devicons", -- keep this if you're using NvChad
---        config = function()
---        require("barbecue").setup({
---                                      theme = {
---                                        -- this highlight is used to override other highlights
---                                        -- you can take advantage of its `bg` and set a background throughout your winbar
---                                        -- (e.g. basename will look like this: { fg = "#c0caf5", bold = true })
---                                        normal = { fg = "#c0caf5" },
---
---                                        -- these highlights correspond to symbols table from config
---                                        ellipsis = { fg = "#737aa2" },
---                                        separator = { fg = "#737aa2" },
---                                        modified = { fg = "#737aa2" },
---
---                                        -- these highlights represent the _text_ of three main parts of barbecue
---                                        dirname = { fg = "#737aa2" },
---                                        basename = { bold = true },
---                                        context = {},
---
---                                        -- these highlights are used for context/navic icons
---                                        context_file = { fg = "#ac8fe4" },
---                                        context_module = { fg = "#ac8fe4" },
---                                        context_namespace = { fg = "#ac8fe4" },
---                                        context_package = { fg = "#ac8fe4" },
---                                        context_class = { fg = "#ac8fe4" },
---                                        context_method = { fg = "#ac8fe4" },
---                                        context_property = { fg = "#ac8fe4" },
---                                        context_field = { fg = "#ac8fe4" },
---                                        context_constructor = { fg = "#ac8fe4" },
---                                        context_enum = { fg = "#ac8fe4" },
---                                        context_interface = { fg = "#ac8fe4" },
---                                        context_function = { fg = "#ac8fe4" },
---                                        context_variable = { fg = "#ac8fe4" },
---                                        context_constant = { fg = "#ac8fe4" },
---                                        context_string = { fg = "#ac8fe4" },
---                                        context_number = { fg = "#ac8fe4" },
---                                        context_boolean = { fg = "#ac8fe4" },
---                                        context_array = { fg = "#ac8fe4" },
---                                        context_object = { fg = "#ac8fe4" },
---                                        context_key = { fg = "#ac8fe4" },
---                                        context_null = { fg = "#ac8fe4" },
---                                        context_enum_member = { fg = "#ac8fe4" },
---                                        context_struct = { fg = "#ac8fe4" },
---                                        context_event = { fg = "#ac8fe4" },
---                                        context_operator = { fg = "#ac8fe4" },
---                                        context_type_parameter = { fg = "#ac8fe4" },
---                                      },
---                                    })
---        end,
---        })
+    use({
+        "utilyre/barbecue.nvim",
+        tag = "*",
+        requires = {
+            "SmiteshP/nvim-navic",
+            "nvim-tree/nvim-web-devicons", -- optional dependency
+        },
+        after = "nvim-web-devicons", -- keep this if you're using NvChad
+        config = function()
+        require("barbecue").setup({
+                                      theme = {
+                                        -- this highlight is used to override other highlights
+                                        -- you can take advantage of its `bg` and set a background throughout your winbar
+                                        -- (e.g. basename will look like this: { fg = "#c0caf5", bold = true })
+                                        normal = { fg = "#c0caf5" },
+
+                                        -- these highlights correspond to symbols table from config
+                                        ellipsis = { fg = "#737aa2" },
+                                        separator = { fg = "#737aa2" },
+                                        modified = { fg = "#737aa2" },
+
+                                        -- these highlights represent the _text_ of three main parts of barbecue
+                                        dirname = { fg = "#737aa2" },
+                                        basename = { bold = true },
+                                        context = {},
+
+                                        -- these highlights are used for context/navic icons
+                                        context_file = { fg = "#ac8fe4" },
+                                        context_module = { fg = "#ac8fe4" },
+                                        context_namespace = { fg = "#ac8fe4" },
+                                        context_package = { fg = "#ac8fe4" },
+                                        context_class = { fg = "#ac8fe4" },
+                                        context_method = { fg = "#ac8fe4" },
+                                        context_property = { fg = "#ac8fe4" },
+                                        context_field = { fg = "#ac8fe4" },
+                                        context_constructor = { fg = "#ac8fe4" },
+                                        context_enum = { fg = "#ac8fe4" },
+                                        context_interface = { fg = "#ac8fe4" },
+                                        context_function = { fg = "#ac8fe4" },
+                                        context_variable = { fg = "#ac8fe4" },
+                                        context_constant = { fg = "#ac8fe4" },
+                                        context_string = { fg = "#ac8fe4" },
+                                        context_number = { fg = "#ac8fe4" },
+                                        context_boolean = { fg = "#ac8fe4" },
+                                        context_array = { fg = "#ac8fe4" },
+                                        context_object = { fg = "#ac8fe4" },
+                                        context_key = { fg = "#ac8fe4" },
+                                        context_null = { fg = "#ac8fe4" },
+                                        context_enum_member = { fg = "#ac8fe4" },
+                                        context_struct = { fg = "#ac8fe4" },
+                                        context_event = { fg = "#ac8fe4" },
+                                        context_operator = { fg = "#ac8fe4" },
+                                        context_type_parameter = { fg = "#ac8fe4" },
+                                      },
+                                    })
+        end,
+        })
   use {
     "SmiteshP/nvim-navbuddy",
     requires = {
@@ -245,6 +260,7 @@ return packer.startup(function(use)
         "nvim-telescope/telescope.nvim" -- Optional
     }
   }
+  use {'nvim-treesitter/nvim-treesitter-context'}
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

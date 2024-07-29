@@ -28,8 +28,8 @@ M.setup = function()
 
   local config = {
     -- disable virtual text
-    virtual_lines = true,
-    virtual_text = true,
+    virtual_lines = false,
+    virtual_text = false,
     virtual_text = {
       spacing = 7,
       update_in_insert = false,
@@ -45,8 +45,8 @@ M.setup = function()
     signs = {
       active = signs,
     },
-    update_in_insert = true,
-    underline = true,
+    update_in_insert = false,
+    underline = false,
     severity_sort = true,
     float = {
       focusable = true,

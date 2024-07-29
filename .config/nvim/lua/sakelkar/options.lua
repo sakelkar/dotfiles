@@ -102,7 +102,7 @@ vim.cmd('highlight Tab ctermfg=blue')
 
 
 -- Set listchars and associate with highlight groups
-vim.o.listchars = 'tab:▸\\ ,eol:¬,nbsp:.,trail:·,extends:»,precedes:«'
+--vim.o.listchars = 'tab:▸\\ ,eol:¬,nbsp:.,trail:·,extends:»,precedes:«'
 vim.cmd('highlight SpecialKey gui=bold')
 vim.cmd('highlight NonText gui=italic')
 vim.cmd('highlight Tab gui=underline')
