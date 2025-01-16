@@ -76,10 +76,15 @@ vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
 
+--vim.opt.list = true -- Enable list mode to visually show trailing whitespace
+--vim.opt.listchars = { tab = "»̃", eol = "¬", trail = "•" } -- Customize list characters
+
+-- Optional: Highlight trailing whitespace with a specific color
+--vim.api.nvim_command("highlight TrailingWhitespace ctermfg=red")
+--vim.api.nvim_command("match TrailingWhitespace /\s\+$/")
+
 -- Lua initialization file
 --vim.cmd [[colorscheme nightfly]]
-
-
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.opt.fillchars.eob = " "

@@ -10,3 +10,12 @@ if not status_ok then
   -- vim.notify("colorscheme " .. colorscheme .. " not found!")
   return
 end
+
+vim.api.nvim_set_hl(0, 'ExtraWhitespace', { ctermbg = 'red', bg = 'red' })
+-- Create an autocmd for ModeChanged event
+vim.api.nvim_create_autocmd('ModeChanged', {
+  pattern = 'i:n', -- Trigger when switching from Insert (i) to Normal (n) mode
+  callback = function()
+    vim.fn.matchadd('ExtraWhitespace', [[\s\+\%#\@<!$]])
+  end,
+})
